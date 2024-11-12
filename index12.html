@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример</title>
+    <style>
+        #click {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        #doubleClick {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+            margin-bottom: 10px;
+        }
+        img {
+            width: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Задача 1 -->
+<div id="click">Кликни меня</div>
+
+
+    <!-- Задача 2 -->
+<div id="doubleClick">Содержимое в консоль</div>
+
+
+    <!-- Задача 3 -->
+<img id="image" src="/images/Team1.png" alt="Image">
+
+
+    <!-- Задача 4 -->
+<input type="text" id="inputField" placeholder="Введите символ" />
+<div id="output">Код символа: </div>
+
+
+    <!-- Задача 5 -->
+<input type="text" id="userInput" placeholder="Введите значение">
+    <button onclick="checkIfNumber()">Проверить</button>
+    <p id="result"></p>
+
+<script>
+    
+    // Задача 1
+
+    document.getElementById('click').onclick = function() {
+        let div = this;
+        div.style.width = (div.offsetWidth + 15) + 'px';
+        div.style.height = (div.offsetHeight + 15) + 'px';
+    };
+
+    
+
+    // Задача 2
+
+    document.getElementById('doubleClick').ondblclick = function() {
+        console.log(this.textContent);
+    };
+
+    
+    
+    // Задача 3
+
+    document.getElementById('image').onclick = function() {
+        this.src = '/images/Team2.png';
+    };
+
+
+
+    // Задача 4
+
+    const inputField = document.getElementById('inputField');
+    const output = document.getElementById('output');
+
+    inputField.addEventListener('keypress', (event) => {
+        const charCode = event.charCode || event.keyCode;
+        output.textContent = `Код символа: ` + charCode;
+    });
+
+
+
+    // Задача 5
+
+    function checkIfNumber() {
+            const input = document.getElementById('userInput').value;
+            const isNumber = !isNaN(input) && input.trim() !== '';
+
+            if (isNumber) {
+                document.getElementById('result').innerText = 'false';
+            } else {
+                document.getElementById('result').innerText = 'true';
+            }
+        }
+
+
+</script>
+
+</body>
+</html>
